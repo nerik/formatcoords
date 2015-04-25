@@ -22,7 +22,6 @@ describe('formatcoords()', function() {
 
 	var latLonExist = function (coord) {
         return function () {
-        	console.log(coord.lat+','+coord.lon);
             expect(coord.lat).to.exist;
 			expect(coord.lon).to.exist;
         };
@@ -30,7 +29,6 @@ describe('formatcoords()', function() {
 
     var latLonAreFloats = function (coord) {
         return function () {
-        	// console.log(coord.lat+','+coord.lon);
             expect(coord.lat).to.be.a('number');
 			expect(coord.lon).to.be.a('number');
         };
@@ -59,38 +57,41 @@ describe('formatcoords()', function() {
 
 });
 
-describe('compute()', function() {
 
-	coord = coords.floats;
-	it('should have north value set to false with ', function () {
-		expect(coord.north).to.be.false;
-	} );
+describe('Coords', function () {
+	describe('#compute()', function() {
 
-	it('should have east value set to true with ', function () {
-		expect(coord.east).to.be.true;
-	} );
+		coord = coords.floats;
+		it('should have north value set to false', function () {
+			expect(coord.north).to.be.false;
+		} );
 
-	it('should have lat degrees set to 35.282000 with ', function () {
-		expect(coord.latValues.degrees).to.equal(35.282000);
-	} );
+		it('should have east value set to true', function () {
+			expect(coord.east).to.be.true;
+		} );
 
-	it('should have lon degrees set to 149.128684 with ', function () {
-		expect(coord.lonValues.degrees).to.equal(149.128684);
-	} );
+		it('should have lat degrees set to 35.282000', function () {
+			expect(coord.latValues.degrees).to.equal(35.282000);
+		} );
 
-	it('should have lat minutes set to 16.91999999999979 with ', function () {
-		expect(coord.latValues.minutes).to.equal(16.91999999999979);
-	} );
+		it('should have lon degrees set to 149.128684', function () {
+			expect(coord.lonValues.degrees).to.equal(149.128684);
+		} );
 
-	it('should have lon minutes set to 7.7210333333333 with ', function () {
-		expect(coord.lonValues.minutes).to.equal(7.721039999999562);
-	} );
+		it('should have lat minutes set to 16.91999999999979', function () {
+			expect(coord.latValues.minutes).to.equal(16.91999999999979);
+		} );
 
-	it('should have lat seconds set to 55.2 with ', function () {
-		expect(coord.latValues.seconds).to.equal(55.19999999998731);
-	} );
+		it('should have lon minutes set to 7.7210333333333', function () {
+			expect(coord.lonValues.minutes).to.equal(7.721039999999562);
+		} );
 
-	it('should have lon seconds set to 43.262 with ', function () {
-		expect(coord.lonValues.seconds).to.equal(43.262399999973695);
-	} );
+		it('should have lat seconds set to 55.2', function () {
+			expect(coord.latValues.seconds).to.equal(55.19999999998731);
+		} );
+
+		it('should have lon seconds set to 43.262', function () {
+			expect(coord.lonValues.seconds).to.equal(43.262399999973695);
+		} );
+	});
 });

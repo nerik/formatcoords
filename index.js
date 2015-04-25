@@ -47,7 +47,6 @@ Coords.prototype.compute = function() {
 		values.degreesInt = Math.floor(values.degrees);
 		values.degreesFrac = values.degrees - values.degreesInt;
 		values.secondsTotal = 3600 * values.degreesFrac; 
-		console.log(values.secondsTotal);
 		values.minutes = values.secondsTotal / 60; 
 		values.seconds = values.secondsTotal - (Math.floor(values.minutes) * 60);
 		return values;
