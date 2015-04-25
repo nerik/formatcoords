@@ -1,0 +1,37 @@
+{
+  "name": "formatcoords",
+  "version": "1.0.0",
+  "description": "A simple and flexible tool to format decimal lat/lon coordinates into degrees/minutes/seconds formats (like DMS).",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nerik/formatcoords.git"
+  },
+  "keywords": [
+    "dms",
+    "coordinates",
+    "latitude",
+    "longitude",
+    "degrees",
+    "minutes",
+    "seconds",
+    "lat",
+    "lon",
+    "lng"
+  ],
+  "author": "@nerik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nerik/formatcoords/issues"
+  },
+  "homepage": "https://github.com/nerik/formatcoords",
+  "devDependencies": {
+    "chai": "^2.2.0"
+  }
+}
