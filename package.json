@@ -7,7 +7,7 @@
     "doc": "doc"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/nerik/formatcoords",
   "devDependencies": {
-    "chai": "^2.2.0"
+    "chai": "^2.2.0",
+    "mocha": "^2.2.4"
   }
 }
