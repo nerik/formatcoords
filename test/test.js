@@ -99,11 +99,11 @@ describe('Coords', function () {
 		it('should render to 35° 16´ 55.20000" S 149° 7´ 43.26240" E by default (DMS)', function() {
 			expect(coord.format()).to.equal('35° 16´ 55.20000" S 149° 7´ 43.26240" E');
 		});
-		it('should render to 35° 16.920´ S 149° 7.721´ E when using "fF" (DM)', function() {
-			expect(coord.format('fF')).to.equal('35° 16.92000´ S 149° 7.72104´ E');
+		it('should render to 35° 16.920´ S 149° 7.721´ E when using "Ff" (DM)', function() {
+			expect(coord.format('Ff')).to.equal('35° 16.92000´ S 149° 7.72104´ E');
 		});
-		it('should render to 35.282° S 149.12868° E when using "F" (decimal degrees)', function() {
-			expect(coord.format('F')).to.equal('35.28200° S 149.12868° E');
+		it('should render to 35.282° S 149.12868° E when using "f" (decimal degrees)', function() {
+			expect(coord.format('f')).to.equal('35.28200° S 149.12868° E');
 		});
 		it ('should render to -35 16 55.20000, 149 7 43.26240 when using custom format "D M s" (GPS format) and custom separator', function() {
 			expect(coord.format('-D M s', ', ')).to.equal('-35 16 55.20000, 149 7 43.26240');

@@ -56,9 +56,9 @@ Coords.prototype.compute = function() {
 };
 
 var shortFormats = {
-	'ffF' : 'DD MM ss X',
-	'fF' : 'DD mm X',
-	'F': 'dd X'
+	'FFf' : 'DD MM ss X',
+	'Ff' : 'DD mm X',
+	'f': 'dd X'
 };
 
 var units = {
@@ -68,7 +68,7 @@ var units = {
 };
 
 Coords.prototype.format = function(format, latLonSeparator) {
-	if (!format) format = 'ffF';
+	if (!format) format = 'FFf';
 	if (!latLonSeparator) latLonSeparator = ' ';
 
 	if ( Object.keys(shortFormats).indexOf(format) > -1 ) {
