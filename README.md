@@ -37,43 +37,56 @@ var coords = formatcoords(27.725499,-18.024301);
 ```
 
 ```
-coords.parse([format])
+coords.parse([format, lat/lon separator])
 ```
 
-Default output format is DMS (degrees minutes seconds) :
+Default output format is DMS (degrees minutes seconds), with a space to separate lat and lon :
 ```
 coords.parse()
 //27° 43´ 31.796" N 18° 1´ 27.484" W
 ```
 
-*Available formats :*
+*Available short formats :*
 
 |                       | Token   | Output |
 |----------------------:|:--------|--------|
-|degrees minutes seconds (DMS)|fff        |27° 43´ 31.796" N 18° 1´ 27.484" W        |
+|degrees minutes seconds (DMS)|ffF        |27° 43´ 31.796" N 18° 1´ 27.484" W        |
 |degrees decimal minutes|fF       |27° 43.529933333333´ N -18° 1.4580666666667´ W       |
 |decimal degrees        |F        |27.725499° N 18.024301° W        |
 
 *Custom formats*
 
+The following values are available for both latitudes and longitudes: 
+
 |                               | Token   | Output |
 |------------------------------:|:--------|--------|
-|degrees                        |d        |27        |
-|degrees with unit              |dd       |27°        |
-|decimal degrees                |D        |27.725499        |
-|decimal degrees with unit      |DD       |27.725499°        |
-|decimal seconds                |S        |31.796        |
-|decimal seconds with unit      |SS       |31.796"        |
-|North South                    |N        |N        |
-|East West                      |E        |W        |
+|degrees                        |D        |27        |
+|degrees with unit              |DD       |27°        |
+|decimal degrees                |d        |27.725499        |
+|decimal degrees with unit      |dd       |27.725499°        |
+|minutes                        |M        |7        |
+|minutes with unit              |MM       |7´        |
+|decimal minutes                |m        |7.63346        |
+|decimal minutes with unit      |mm       |7.63346´        |
+|decimal seconds                |s        |31.796        |
+|decimal seconds with unit      |ss       |31.796"        |
+|direction                      |X        |[N|S], [E|W]        |
+|minus sign (west of Greenwich and south of equator)|-        |[-]        |
+
+*Custom format example*
+
+```
+coord.format('-D M s', ', ');
+//-35 16 55.20000, 149 7 43.26240
+```
 
 *Decimal places*
 
-Seconds have 3 decimal places by default. It is customizable using an integer after the token :
-```
-coords.parse('SS4');
-//31.7960"
-```
+Decimal values will render with 5 decimal places by default.
+
+
+## Browser support
+IE <= 8 not supported.
 
 ## DMS to decimal
 

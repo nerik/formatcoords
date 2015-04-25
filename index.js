@@ -43,14 +43,62 @@ Coords.prototype.compute = function() {
 
 	function computeFor(initValue) {
 		var values = {};
+		values.initValue = initValue;
 		values.degrees = Math.abs(initValue);
 		values.degreesInt = Math.floor(values.degrees);
 		values.degreesFrac = values.degrees - values.degreesInt;
 		values.secondsTotal = 3600 * values.degreesFrac; 
 		values.minutes = values.secondsTotal / 60; 
-		values.seconds = values.secondsTotal - (Math.floor(values.minutes) * 60);
+		values.minutesInt = Math.floor(values.minutes);
+		values.seconds = values.secondsTotal - (values.minutesInt * 60);
 		return values;
 	}
+};
+
+var shortFormats = {
+	'ffF' : 'DD MM ss X',
+	'fF' : 'DD mm X',
+	'F': 'dd X'
+};
+
+var units = {
+	degrees: '°',
+	minutes: '´',
+	seconds: '"',
+};
+
+Coords.prototype.format = function(format, latLonSeparator) {
+	if (!format) format = 'ffF';
+	if (!latLonSeparator) latLonSeparator = ' ';
+
+	if ( Object.keys(shortFormats).indexOf(format) > -1 ) {
+		format = shortFormats[format];
+	}
+
+	var lat = formatFor(this.latValues, (this.north) ? 'N' : 'S' );
+	var lon = formatFor(this.lonValues, (this.east) ? 'E' : 'W' );
+
+	function formatFor(values, X) {
+		var formatted = format;
+		formatted = formatted.replace(/DD/g, values.degreesInt+units.degrees);
+		formatted = formatted.replace(/dd/g, values.degrees.toFixed(5)+units.degrees);
+		formatted = formatted.replace(/D/g, values.degreesInt);
+		formatted = formatted.replace(/d/g, values.degrees.toFixed(5));
+		formatted = formatted.replace(/MM/g, values.minutesInt+units.minutes);
+		formatted = formatted.replace(/mm/g, values.minutes.toFixed(5)+units.minutes);
+		formatted = formatted.replace(/M/g, values.minutesInt);
+		formatted = formatted.replace(/m/g, values.minutes.toFixed(5));
+		formatted = formatted.replace(/ss/g, values.seconds.toFixed(5)+units.seconds);
+		formatted = formatted.replace(/s/g, values.seconds.toFixed(5));
+		
+		formatted = formatted.replace(/-/g, (values.initValue<0) ? '-' : '');
+		
+		formatted = formatted.replace(/X/g, X);
+
+		return formatted;
+	}
+
+	return lat + latLonSeparator + lon;
 };
 
 function formatcoords() {
