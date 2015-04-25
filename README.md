@@ -46,7 +46,7 @@ coords.parse()
 |                       | Token   | Output |
 |----------------------:|:--------|--------|
 |degrees minutes seconds (DMS)|fff        |27° 43´ 31.796" N 18° 1´ 27.484" W        |
-|degrees decimal minutes|fF       |27° 43.529933333333´ , -18° 1.4580666666667´        |
+|degrees decimal minutes|fF       |27° 43.529933333333´ N -18° 1.4580666666667´ W       |
 |decimal degrees        |F        |27.725499° N 18.024301° W        |
 
 *Custom formats*
