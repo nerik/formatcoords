@@ -18,9 +18,12 @@ formatcoords(40.76,-73.984).parse();
 #### parsing
 
 The ```formatcoords(coord1[, coord2, lonlat])``` method accepts decimal lat/lon coordinates in several formats :
-- ```formatcoords(lat, lon)``` : ```lat``` and ```lon``` are floats.
-- ```formatcoords(lon, lat, true)``` : ```lon``` and ```lat``` are floats. First longitude, then latitude. Useful for use with GeoJSON, for example.
-- ```formatcoords(latlon)``` : ```latlon``` is a string in "[lat,lon]" format.
+- ```formatcoords([lat, lon])```: an array of floats.
+- ```formatcoords([lon, lat], true)```: an array of floats. First longitude, then latitude. Useful for use with GeoJSON, for example.
+- ```formatcoords(lat, lon)``` : floats.
+- ```formatcoords(lon, lat, true)``` : floats. First longitude, then latitude. Useful for use with GeoJSON, for example.
+- ```formatcoords('latlon')``` : ```latlon``` is a string in "lat,lon" format.
+- ```formatcoords({lat: lat, lng: lon}``` an object with ```lat``` and ```lng``` properties (Leaflet LatLng object)
 
 #### formatting
 
