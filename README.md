@@ -1,5 +1,10 @@
 # formatcoords
-A simple and flexible tool to format decimal lat/lon coordinates into other formats (like DMS) 
+
+![](https://raw.githubusercontent.com/nerik/formatcoords/master/doc/mercator.jpg)
+
+A simple and flexible tool to format decimal lat/lon coordinates into degrees/minutes/seconds formats (like DMS).
+
+For geo hipsters that think that **48° 54´ 16.016" S 71° 0´ 56.250" W** looks way more awesome than **-48.9044488,-71.015625**.
 
 ## install: node/browserify 
 
