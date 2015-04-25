@@ -9,9 +9,9 @@ Coords.prototype.init = function() {
 		this.lon = arguments[0].lng;
 	}
 	else if (typeof arguments[0] === "string") {
-		var arr = arguments[0].split(",");
-		this.lat = parseFloat(arr[0].trim());
-		this.lon = parseFloat(arr[1].trim());
+		var strarr = arguments[0].split(",");
+		this.lat = parseFloat(strarr[0].trim());
+		this.lon = parseFloat(strarr[1].trim());
 	}
 	else if (Object.prototype.toString.call(arguments[0]) === "[object Array]" ) {
 		var arr = arguments[0];
@@ -30,6 +30,27 @@ Coords.prototype.init = function() {
 	else {
 		this.lat = arguments[0];
 		this.lon = arguments[1];
+	}
+
+	this.compute();
+};
+
+Coords.prototype.compute = function() {
+	this.north = this.lat > 0;
+	this.east = this.lon > 0;
+	this.latValues = computeFor(this.lat);
+	this.lonValues = computeFor(this.lon);
+
+	function computeFor(initValue) {
+		var values = {};
+		values.degrees = Math.abs(initValue);
+		values.degreesInt = Math.floor(values.degrees);
+		values.degreesFrac = values.degrees - values.degreesInt;
+		values.secondsTotal = 3600 * values.degreesFrac; 
+		console.log(values.secondsTotal);
+		values.minutes = values.secondsTotal / 60; 
+		values.seconds = values.secondsTotal - (Math.floor(values.minutes) * 60);
+		return values;
 	}
 };
 
