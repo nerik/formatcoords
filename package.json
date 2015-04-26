@@ -1,6 +1,6 @@
 {
   "name": "formatcoords",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "format decimal lat/lon coords into degrees/minutes/seconds formats (like DMS).",
   "main": "index.js",
   "directories": {
