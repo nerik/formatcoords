@@ -1,7 +1,7 @@
 {
   "name": "formatcoords",
   "version": "1.0.0",
-  "description": "A simple and flexible tool to format decimal lat/lon coordinates into degrees/minutes/seconds formats (like DMS).",
+  "description": "format decimal lat/lon coords into degrees/minutes/seconds formats (like DMS).",
   "main": "index.js",
   "directories": {
     "doc": "doc"
