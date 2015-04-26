@@ -1,0 +1,105 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/iojs', '/usr/local/bin/npm', 'publish', './' ]
+2 info using npm@2.7.5
+3 info using node@v1.6.4
+4 verbose publish [ './' ]
+5 silly cache add args [ './', null ]
+6 verbose cache add spec ./
+7 silly cache add parsed spec { raw: './',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: './',
+7 silly cache add   spec: '/Users/nerik/Dropbox/taf/formatcoords',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/nerik/.npm/formatcoords/1.0.0/package.tgz not in flight; packing
+9 verbose tar pack [ '/Users/nerik/.npm/formatcoords/1.0.0/package.tgz',
+9 verbose tar pack   '/Users/nerik/Dropbox/taf/formatcoords' ]
+10 verbose tarball /Users/nerik/.npm/formatcoords/1.0.0/package.tgz
+11 verbose folder /Users/nerik/Dropbox/taf/formatcoords
+12 info prepublish formatcoords@1.0.0
+13 verbose addLocalTarball adding from inside cache /Users/nerik/.npm/formatcoords/1.0.0/package.tgz
+14 silly cache afterAdd formatcoords@1.0.0
+15 verbose afterAdd /Users/nerik/.npm/formatcoords/1.0.0/package/package.json not in flight; writing
+16 verbose afterAdd /Users/nerik/.npm/formatcoords/1.0.0/package/package.json written
+17 silly publish { name: 'formatcoords',
+17 silly publish   version: '1.0.0',
+17 silly publish   description: 'format decimal lat/lon coords into degrees/minutes/seconds formats (like DMS).',
+17 silly publish   main: 'index.js',
+17 silly publish   directories: { doc: 'doc' },
+17 silly publish   scripts: { test: 'mocha' },
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'https://github.com/nerik/formatcoords.git' },
+17 silly publish   keywords:
+17 silly publish    [ 'dms',
+17 silly publish      'coordinates',
+17 silly publish      'latitude',
+17 silly publish      'longitude',
+17 silly publish      'degrees',
+17 silly publish      'minutes',
+17 silly publish      'seconds',
+17 silly publish      'lat',
+17 silly publish      'lon',
+17 silly publish      'lng' ],
+17 silly publish   author: { name: '@nerik' },
+17 silly publish   license: 'ISC',
+17 silly publish   bugs: { url: 'https://github.com/nerik/formatcoords/issues' },
+17 silly publish   homepage: 'https://github.com/nerik/formatcoords',
+17 silly publish   devDependencies: { chai: '^2.2.0', mocha: '^2.2.4' },
+17 silly publish   readme: '# formatcoords\n\n![](https://raw.githubusercontent.com/nerik/formatcoords/master/doc/mercator.jpg)\n\nA simple and flexible tool to format decimal lat/lon coordinates into degrees/minutes/seconds formats (like DMS).\n\nFor geo hipsters that think that **48° 54´ 16.016" S 71° 0´ 56.250" W** looks way more awesome than **-48.9044488,-71.015625**.\n\n## install: node/browserify \n\n```\nnpm install formatcoords\n```\n\n## use\n\n```\nvar formatcoords = require(\'formatcoords\');\nformatcoords(40.76,-73.984).parse();\n//40° 45\' 36.000" N 73° 59\' 2.400" W\n```\n\n#### parsing\n\nThe ```formatcoords(coord1[, coord2, lonlat])``` method accepts decimal lat/lon coordinates in several formats :\n- ```formatcoords([lat, lon])```: an array of floats.\n- ```formatcoords([lon, lat], true)```: an array of floats. First longitude, then latitude. Useful for use with GeoJSON, for example.\n- ```formatcoords(lat, lon)``` : floats.\n- ```formatcoords(lon, lat, true)``` : floats. First longitude, then latitude. Useful for use with GeoJSON, for example.\n- ```formatcoords(\'latlon\')``` : ```latlon``` is a string in "lat,lon" format.\n- ```formatcoords({lat: lat, lng: lon}``` an object with ```lat``` and ```lng``` properties (Leaflet LatLng object)\n\n#### formatting\n\n```\nvar coords = formatcoords(27.725499,-18.024301);\n```\n\n```\ncoords.parse([format, lat/lon separator])\n```\n\nDefault output format is DMS (degrees minutes seconds), with a space to separate lat and lon :\n```\ncoords.parse()\n//27° 43´ 31.796" N 18° 1´ 27.484" W\n```\n\n*Available short formats :*\n\n|                       | Token   | Output |\n|----------------------:|:--------|--------|\n|degrees minutes seconds (DMS)|FFf        |27° 43´ 31.796" N 18° 1´ 27.484" W        |\n|degrees decimal minutes|Ff       |27° 43.529933333333´ N -18° 1.4580666666667´ W       |\n|decimal degrees        |f        |27.725499° N 18.024301° W        |\n\n*Custom formats*\n\nThe following values are available for both latitudes and longitudes: \n\n|                               | Token   | Output |\n|------------------------------:|:--------|--------|\n|degrees                        |D        |27        |\n|degrees with unit              |DD       |27°        |\n|decimal degrees                |d        |27.725499        |\n|decimal degrees with unit      |dd       |27.725499°        |\n|minutes                        |M        |7        |\n|minutes with unit              |MM       |7´        |\n|decimal minutes                |m        |7.63346        |\n|decimal minutes with unit      |mm       |7.63346´        |\n|decimal seconds                |s        |31.796        |\n|decimal seconds with unit      |ss       |31.796"        |\n|direction                      |X        |[N,S], [E,W]        |\n|minus sign (west of Greenwich and south of equator)|-        |[-]        |\n\n*Custom format example*\n\n```\ncoord.format(\'-D M s\', \', \');\n//-35 16 55.20000, 149 7 43.26240\n```\n\n*Decimal places*\n\nDecimal values will render with 5 decimal places by default.\n\n\n## Browser support\nIE <= 8 not supported.\n\n## DMS to decimal\n\nUse [parse-dms](https://www.npmjs.com/package/parse-dms).\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   gitHead: '4c252c9a6f745890e9762645d5639d7df8d4c309',
+17 silly publish   _id: 'formatcoords@1.0.0',
+17 silly publish   _shasum: '95397ee02769017246090ed6247ae6a2191ebbca',
+17 silly publish   _from: '.' }
+18 silly mapToRegistry name formatcoords
+19 silly mapToRegistry using default registry
+20 silly mapToRegistry registry https://registry.npmjs.org/
+21 silly mapToRegistry uri https://registry.npmjs.org/formatcoords
+22 verbose publish registryBase https://registry.npmjs.org/
+23 silly publish uploading /Users/nerik/.npm/formatcoords/1.0.0/package.tgz
+24 verbose request uri https://registry.npmjs.org/formatcoords
+25 verbose request sending authorization for write operation
+26 info attempt registry request try #1 at 18:14:50
+27 verbose request using bearer token for auth
+28 verbose request id d4cf661f936dd167
+29 http request PUT https://registry.npmjs.org/formatcoords
+30 http 403 https://registry.npmjs.org/formatcoords
+31 verbose headers { date: 'Sun, 26 Apr 2015 16:14:52 GMT',
+31 verbose headers   server: 'Apache',
+31 verbose headers   'content-type': 'application/json',
+31 verbose headers   'cache-control': 'max-age=60',
+31 verbose headers   'content-length': '95',
+31 verbose headers   'accept-ranges': 'bytes',
+31 verbose headers   via: '1.1 varnish',
+31 verbose headers   'x-served-by': 'cache-fra1241-FRA',
+31 verbose headers   'x-cache': 'MISS',
+31 verbose headers   'x-cache-hits': '0',
+31 verbose headers   'x-timer': 'S1430064891.289382,VS0,VE1053',
+31 verbose headers   'keep-alive': 'timeout=10, max=50',
+31 verbose headers   connection: 'Keep-Alive' }
+32 verbose request invalidating /Users/nerik/.npm/registry.npmjs.org/formatcoords on PUT
+33 error publish Failed PUT 403
+34 verbose stack Error: "You cannot publish over the previously published version 1.0.0." : formatcoords
+34 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:247:14)
+34 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+34 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:360:22)
+34 verbose stack     at emitTwo (events.js:87:13)
+34 verbose stack     at Request.emit (events.js:169:7)
+34 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1202:14)
+34 verbose stack     at emitOne (events.js:82:20)
+34 verbose stack     at Request.emit (events.js:166:7)
+34 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1150:12)
+34 verbose stack     at emitNone (events.js:72:20)
+35 verbose statusCode 403
+36 verbose pkgid formatcoords
+37 verbose cwd /Users/nerik/Dropbox/taf/formatcoords
+38 error Darwin 14.1.0
+39 error argv "/usr/local/bin/iojs" "/usr/local/bin/npm" "publish" "./"
+40 error node v1.6.4
+41 error npm  v2.7.5
+42 error code E403
+43 error "You cannot publish over the previously published version 1.0.0." : formatcoords
+44 error If you need help, you may report this error at:
+44 error     <https://github.com/npm/npm/issues>
+45 verbose exit [ 1, true ]
