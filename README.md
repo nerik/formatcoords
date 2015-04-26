@@ -70,7 +70,7 @@ The following values are available for both latitudes and longitudes:
 |decimal minutes with unit      |mm       |7.63346´        |
 |decimal seconds                |s        |31.796        |
 |decimal seconds with unit      |ss       |31.796"        |
-|direction                      |X        |[N|S], [E|W]        |
+|direction                      |X        |[N,S], [E,W]        |
 |minus sign (west of Greenwich and south of equator)|-        |[-]        |
 
 *Custom format example*
