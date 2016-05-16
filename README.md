@@ -16,7 +16,7 @@ npm install formatcoords
 
 ```
 var formatcoords = require('formatcoords');
-formatcoords(40.76,-73.984).parse();
+formatcoords(40.76,-73.984).format();
 //40° 45' 36.000" N 73° 59' 2.400" W
 ```
 
@@ -37,12 +37,12 @@ var coords = formatcoords(27.725499,-18.024301);
 ```
 
 ```
-coords.parse([format, lat/lon separator])
+coords.format([format, lat/lon separator])
 ```
 
 Default output format is DMS (degrees minutes seconds), with a space to separate lat and lon :
 ```
-coords.parse()
+coords.format()
 //27° 43´ 31.796" N 18° 1´ 27.484" W
 ```
 
