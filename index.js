@@ -24,7 +24,7 @@ Coords.prototype.init = function() {
 		}
 	}
 	else if (arguments[2] === true) {
-	    this.lat = arguments[1];
+		this.lat = arguments[1];
 		this.lon = arguments[0];
 	} 
 	else {
@@ -67,12 +67,16 @@ var units = {
 	seconds: '"',
 };
 
-Coords.prototype.format = function(format, latLonSeparator) {
+Coords.prototype.format = function(format, latLonSeparator, numberDecimals) {
 	if (!format) format = 'FFf';
 	if (!latLonSeparator) latLonSeparator = ' ';
 
 	if ( Object.keys(shortFormats).indexOf(format) > -1 ) {
 		format = shortFormats[format];
+	}
+
+	if (typeof numberDecimals === 'undefined') {
+		numberDecimals = 5;
 	}
 
 	var lat = formatFor(this.latValues, (this.north) ? 'N' : 'S' );
@@ -81,15 +85,15 @@ Coords.prototype.format = function(format, latLonSeparator) {
 	function formatFor(values, X) {
 		var formatted = format;
 		formatted = formatted.replace(/DD/g, values.degreesInt+units.degrees);
-		formatted = formatted.replace(/dd/g, values.degrees.toFixed(5)+units.degrees);
+		formatted = formatted.replace(/dd/g, values.degrees.toFixed(numberDecimals)+units.degrees);
 		formatted = formatted.replace(/D/g, values.degreesInt);
-		formatted = formatted.replace(/d/g, values.degrees.toFixed(5));
+		formatted = formatted.replace(/d/g, values.degrees.toFixed(numberDecimals));
 		formatted = formatted.replace(/MM/g, values.minutesInt+units.minutes);
-		formatted = formatted.replace(/mm/g, values.minutes.toFixed(5)+units.minutes);
+		formatted = formatted.replace(/mm/g, values.minutes.toFixed(numberDecimals)+units.minutes);
 		formatted = formatted.replace(/M/g, values.minutesInt);
-		formatted = formatted.replace(/m/g, values.minutes.toFixed(5));
-		formatted = formatted.replace(/ss/g, values.seconds.toFixed(5)+units.seconds);
-		formatted = formatted.replace(/s/g, values.seconds.toFixed(5));
+		formatted = formatted.replace(/m/g, values.minutes.toFixed(numberDecimals));
+		formatted = formatted.replace(/ss/g, values.seconds.toFixed(numberDecimals)+units.seconds);
+		formatted = formatted.replace(/s/g, values.seconds.toFixed(numberDecimals));
 		
 		formatted = formatted.replace(/-/g, (values.initValue<0) ? '-' : '');
 		
@@ -102,9 +106,9 @@ Coords.prototype.format = function(format, latLonSeparator) {
 };
 
 function formatcoords() {
-    var c = new Coords();
-    c.init.apply(c, arguments);
-    return c;
+	var c = new Coords();
+	c.init.apply(c, arguments);
+	return c;
 }
 
 module.exports = formatcoords;
