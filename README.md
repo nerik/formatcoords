@@ -37,14 +37,15 @@ var coords = formatcoords(27.725499,-18.024301);
 ```
 
 ```
-coords.format([format, lat/lon separator, number of decimal places])
+coords.format(format, {options})
 ```
 
-Default output format is DMS (degrees minutes seconds), with a space to separate lat and lon :
+Default output format is DMS (degrees minutes seconds), with a space to separate lat and lon, and 5 decimal places :
 ```
 coords.format()
 //27° 43´ 31.796" N 18° 1´ 27.484" W
 ```
+
 
 *Available short formats :*
 
@@ -76,17 +77,22 @@ The following values are available for both latitudes and longitudes:
 *Custom format example*
 
 ```
-coord.format('-D M s', ', ');
-//-35 16 55.20000, 149 7 43.26240
+coord.format('-D M s');
+//-35 16 55.20000 149 7 43.26240
 ```
+
+###### options
+| Option Name              | Description   | Default & type |
+|-------------------------:|:--------------|---------|
+|latLonSeparator         | The seperator to use between the lat and lon value | ' ' `string` |
+|decimalPlaces           | The number of decimal places to return | 5 `number`|
+
+*Custom format example with additional options
+
 ```
-coord.format('DD MM ss X', ', ', 0);
+coord.format('DD MM ss X', {latLonSeparator: ', ',  decimalPlaces: 0);
 //35° 43´ 49" S, 86° 1´ 55" E
 ```
-
-*Decimal places*
-
-Decimal values will render with 5 decimal places by default although they can be varied with the custom format.
 
 
 ## Browser support
