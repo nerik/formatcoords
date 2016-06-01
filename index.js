@@ -24,7 +24,7 @@ Coords.prototype.init = function() {
 		}
 	}
 	else if (arguments[2] === true) {
-	    this.lat = arguments[1];
+		this.lat = arguments[1];
 		this.lon = arguments[0];
 	} 
 	else {
@@ -67,9 +67,34 @@ var units = {
 	seconds: '"',
 };
 
-Coords.prototype.format = function(format, latLonSeparator) {
-	if (!format) format = 'FFf';
-	if (!latLonSeparator) latLonSeparator = ' ';
+Coords.prototype.format = function(format, options) {
+	if (typeof format === 'object') {
+		var submittedFormat = format
+		options = format;
+		format = 'FFf';
+	}
+	if (typeof format === 'undefined'){
+		format = 'FFf';
+	} 
+	if (typeof options === 'undefined') {
+		options = {};
+	}
+	if (typeof options === 'string'){
+		var submittedString = options;
+		options = {
+			latLonSeparator: submittedString
+		}
+	}
+	if (typeof options.latLonSeparator === 'undefined') {
+		options.latLonSeparator = ' ';
+	}
+	if(typeof options.decimalPlaces === 'undefined') {
+		options.decimalPlaces = 5;
+	}
+	else {
+		options.decimalPlaces = parseInt(options.decimalPlaces);
+	}
+	
 
 	if ( Object.keys(shortFormats).indexOf(format) > -1 ) {
 		format = shortFormats[format];
@@ -81,15 +106,15 @@ Coords.prototype.format = function(format, latLonSeparator) {
 	function formatFor(values, X) {
 		var formatted = format;
 		formatted = formatted.replace(/DD/g, values.degreesInt+units.degrees);
-		formatted = formatted.replace(/dd/g, values.degrees.toFixed(5)+units.degrees);
+		formatted = formatted.replace(/dd/g, values.degrees.toFixed(options.decimalPlaces)+units.degrees);
 		formatted = formatted.replace(/D/g, values.degreesInt);
-		formatted = formatted.replace(/d/g, values.degrees.toFixed(5));
+		formatted = formatted.replace(/d/g, values.degrees.toFixed(options.decimalPlaces));
 		formatted = formatted.replace(/MM/g, values.minutesInt+units.minutes);
-		formatted = formatted.replace(/mm/g, values.minutes.toFixed(5)+units.minutes);
+		formatted = formatted.replace(/mm/g, values.minutes.toFixed(options.decimalPlaces)+units.minutes);
 		formatted = formatted.replace(/M/g, values.minutesInt);
-		formatted = formatted.replace(/m/g, values.minutes.toFixed(5));
-		formatted = formatted.replace(/ss/g, values.seconds.toFixed(5)+units.seconds);
-		formatted = formatted.replace(/s/g, values.seconds.toFixed(5));
+		formatted = formatted.replace(/m/g, values.minutes.toFixed(options.decimalPlaces));
+		formatted = formatted.replace(/ss/g, values.seconds.toFixed(options.decimalPlaces)+units.seconds);
+		formatted = formatted.replace(/s/g, values.seconds.toFixed(options.decimalPlaces));
 		
 		formatted = formatted.replace(/-/g, (values.initValue<0) ? '-' : '');
 		
@@ -98,13 +123,13 @@ Coords.prototype.format = function(format, latLonSeparator) {
 		return formatted;
 	}
 
-	return lat + latLonSeparator + lon;
+	return lat + options.latLonSeparator + lon;
 };
 
 function formatcoords() {
-    var c = new Coords();
-    c.init.apply(c, arguments);
-    return c;
+	var c = new Coords();
+	c.init.apply(c, arguments);
+	return c;
 }
 
 module.exports = formatcoords;

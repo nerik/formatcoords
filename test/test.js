@@ -21,30 +21,30 @@ describe('formatcoords()', function() {
 	} );
 
 	var latLonExist = function (coord) {
-        return function () {
-            expect(coord.lat).to.exist;
+		return function () {
+			expect(coord.lat).to.exist;
 			expect(coord.lon).to.exist;
-        };
-    };
+		};
+	};
 
-    var latLonAreFloats = function (coord) {
-        return function () {
-            expect(coord.lat).to.be.a('number');
+	var latLonAreFloats = function (coord) {
+		return function () {
+			expect(coord.lat).to.be.a('number');
 			expect(coord.lon).to.be.a('number');
-        };
-    };
+		};
+	};
 
-    var latIsCorrect = function (coord) {
-        return function () {
-        	expect(coord.lat).to.equal(-35.282000);
-        };
-    };
+	var latIsCorrect = function (coord) {
+		return function () {
+			expect(coord.lat).to.equal(-35.282000);
+		};
+	};
 
-    var lonIsCorrect = function (coord) {
-        return function () {
-        	expect(coord.lon).to.equal(149.128684);
-        };
-    };
+	var lonIsCorrect = function (coord) {
+		return function () {
+			expect(coord.lon).to.equal(149.128684);
+		};
+	};
 
 
 	for(var key in coords) {
@@ -105,8 +105,17 @@ describe('Coords', function () {
 		it('should render to 35.282° S 149.12868° E when using "f" (decimal degrees)', function() {
 			expect(coord.format('f')).to.equal('35.28200° S 149.12868° E');
 		});
-		it ('should render to -35 16 55.20000, 149 7 43.26240 when using custom format "D M s" (GPS format) and custom separator', function() {
+		it ('should render to -35 16 55.20000, 149 7 43.26240 when using custom format "D M s" (GPS format) and custom separator as a string rather than object', function() {
 			expect(coord.format('-D M s', ', ')).to.equal('-35 16 55.20000, 149 7 43.26240');
+		});
+		it ('should render to -35 16 55.20000, 149 7 43.26240 when using custom format "D M s" (GPS format) and custom separator', function() {
+			expect(coord.format('-D M s', {latLonSeparator: ', '})).to.equal('-35 16 55.20000, 149 7 43.26240');
+		});
+		it ('should render to 35° 16´ 55" S, 149° 7´ 43" E when using custom format "DD MM ss X" and complete options object', function() {
+			expect(coord.format('DD MM ss X',  {latLonSeparator: ' - ', decimalPlaces: 0})).to.equal('35° 16´ 55" S - 149° 7´ 43" E');
+		});
+		it ('should render to 35° 16´ 55" S, 149° 7´ 43" E when only passing options object and forgetting format', function() {
+			expect(coord.format({decimalPlaces: 0})).to.equal('35° 16´ 55" S 149° 7´ 43" E');
 		});
 	});
 });
