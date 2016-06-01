@@ -25,7 +25,14 @@
     "lon",
     "lng"
   ],
-  "author": "@nerik",
+  "author": {
+    "name": "Erik Escoffier",
+    "email": "erik.escoffier@gmail.com"
+  },
+  "contributors": [
+    "Erik Escoffier <erik.escoffier@gmail.com>",
+    "Rowan Winsemius"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nerik/formatcoords/issues"
