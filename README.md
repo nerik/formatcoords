@@ -1,4 +1,4 @@
-# formatcoords
+# formatcoords [![Build Status](https://travis-ci.org/nerik/formatcoords.svg?branch=master)](https://travis-ci.org/nerik/formatcoords)
 
 ![](https://raw.githubusercontent.com/nerik/formatcoords/master/doc/mercator.jpg)
 
