@@ -6,7 +6,7 @@ A simple and flexible tool to format decimal lat/lon coordinates into degrees/mi
 
 For geo hipsters that think that **48° 54´ 16.016" S 71° 0´ 56.250" W** looks way more awesome than **-48.9044488,-71.015625**.
 
-## install: node/browserify 
+## install: node/browserify
 
 ```
 npm install formatcoords
@@ -47,7 +47,7 @@ coords.format()
 ```
 
 
-*Available short formats :*
+*Available short formats:*
 
 |                       | Token   | Output |
 |----------------------:|:--------|--------|
@@ -55,9 +55,9 @@ coords.format()
 |degrees decimal minutes|Ff       |27° 43.529933333333´ N -18° 1.4580666666667´ W       |
 |decimal degrees        |f        |27.725499° N 18.024301° W        |
 
-*Custom formats*
+*Custom formats:*
 
-The following values are available for both latitudes and longitudes: 
+The following values are available for both latitudes and longitudes:
 
 |                               | Token   | Output |
 |------------------------------:|:--------|--------|
@@ -84,10 +84,10 @@ coord.format('-D M s');
 ###### options
 | Option Name              | Description   | Default & type |
 |-------------------------:|:--------------|---------|
-|latLonSeparator         | The seperator to use between the lat and lon value | ' ' `string` |
+|latLonSeparator         | The separator to use between the lat and lon values | ' ' `string` |
 |decimalPlaces           | The number of decimal places to return | 5 `number`|
 
-*Custom format example with additional options
+*Custom format example with additional options*
 
 ```
 coord.format('DD MM ss X', {latLonSeparator: ', ',  decimalPlaces: 0);
