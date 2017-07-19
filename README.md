@@ -4,7 +4,7 @@
 
 A simple and flexible tool to format decimal lat/lon coordinates into degrees/minutes/seconds formats (like DMS), using a [moment.js](http://momentjs.com/)-like API.
 
-For geo hipsters that think that **48° 54´ 16.016" S 71° 0´ 56.250" W** looks way more awesome than **-48.9044488,-71.015625**.
+For geo hipsters that think that **48° 54′ 16.016″ S 71° 0′ 56.250″ W** looks way more awesome than **-48.9044488,-71.015625**.
 
 ## install: node/browserify
 
@@ -17,7 +17,7 @@ npm install formatcoords
 ```
 var formatcoords = require('formatcoords');
 formatcoords(40.76,-73.984).format();
-//40° 45' 36.000" N 73° 59' 2.400" W
+//40° 45′ 36.000″ N 73° 59′ 2.400″ W
 ```
 
 #### parsing
@@ -43,7 +43,7 @@ coords.format(format, {options})
 Default output format is DMS (degrees minutes seconds), with a space to separate lat and lon, and 5 decimal places :
 ```
 coords.format()
-//27° 43´ 31.796" N 18° 1´ 27.484" W
+//27° 43′ 31.796″ N 18° 1′ 27.484″ W
 ```
 
 
@@ -51,8 +51,8 @@ coords.format()
 
 |                       | Token   | Output |
 |----------------------:|:--------|--------|
-|degrees minutes seconds (DMS)|FFf        |27° 43´ 31.796" N 18° 1´ 27.484" W        |
-|degrees decimal minutes|Ff       |27° 43.529933333333´ N -18° 1.4580666666667´ W       |
+|degrees minutes seconds (DMS)|FFf        |27° 43′ 31.796″ N 18° 1′ 27.484″ W        |
+|degrees decimal minutes|Ff       |27° 43.529933333333′ N -18° 1.4580666666667′ W       |
 |decimal degrees        |f        |27.725499° N 18.024301° W        |
 
 *Custom formats:*
@@ -66,11 +66,11 @@ The following values are available for both latitudes and longitudes:
 |decimal degrees                |d        |27.725499        |
 |decimal degrees with unit      |dd       |27.725499°        |
 |minutes                        |M        |7        |
-|minutes with unit              |MM       |7´        |
+|minutes with unit              |MM       |7′        |
 |decimal minutes                |m        |7.63346        |
-|decimal minutes with unit      |mm       |7.63346´        |
+|decimal minutes with unit      |mm       |7.63346′        |
 |decimal seconds                |s        |31.796        |
-|decimal seconds with unit      |ss       |31.796"        |
+|decimal seconds with unit      |ss       |31.796″        |
 |direction                      |X        |[N,S], [E,W]        |
 |minus sign (west of Greenwich and south of equator)|-        |[-]        |
 
@@ -91,7 +91,7 @@ coord.format('-D M s');
 
 ```
 coord.format('DD MM ss X', {latLonSeparator: ', ',  decimalPlaces: 0);
-//35° 43´ 49" S, 86° 1´ 55" E
+//35° 43′ 49″ S, 86° 1′ 55″ E
 ```
 
 
