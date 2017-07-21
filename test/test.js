@@ -6,8 +6,8 @@ var formatcoords = require('../index');
 var expect = require("chai").expect;
 
 var coords = {
-	floats: formatcoords(-35.282000, 149.128684), 
-	floatslonlat: formatcoords(149.128684, -35.282000, true), 
+	floats: formatcoords(-35.282000, 149.128684),
+	floatslonlat: formatcoords(149.128684, -35.282000, true),
 	array: formatcoords([-35.282000, 149.128684]),
 	arraylonlat: formatcoords([149.128684, -35.282000], true),
 	string: formatcoords('-35.282000, 149.128684'),
@@ -57,11 +57,11 @@ describe('formatcoords()', function() {
 
 });
 
-var coord = coords.floats; 
+var coord = coords.floats;
 
 describe('Coords', function () {
 	describe('#compute()', function() {
-		
+
 		it('should have north value set to false', function () {
 			expect(coord.north).to.be.false;
 		} );
@@ -96,11 +96,11 @@ describe('Coords', function () {
 	});
 
 	describe('#format()', function() {
-		it('should render to 35° 16´ 55.20000" S 149° 7´ 43.26240" E by default (DMS)', function() {
-			expect(coord.format()).to.equal('35° 16´ 55.20000" S 149° 7´ 43.26240" E');
+		it('should render to 35° 16′ 55.20000″ S 149° 7′ 43.26240″ E by default (DMS)', function() {
+			expect(coord.format()).to.equal('35° 16′ 55.20000″ S 149° 7′ 43.26240″ E');
 		});
-		it('should render to 35° 16.920´ S 149° 7.721´ E when using "Ff" (DM)', function() {
-			expect(coord.format('Ff')).to.equal('35° 16.92000´ S 149° 7.72104´ E');
+		it('should render to 35° 16.920′ S 149° 7.721′ E when using "Ff" (DM)', function() {
+			expect(coord.format('Ff')).to.equal('35° 16.92000′ S 149° 7.72104′ E');
 		});
 		it('should render to 35.282° S 149.12868° E when using "f" (decimal degrees)', function() {
 			expect(coord.format('f')).to.equal('35.28200° S 149.12868° E');
@@ -111,11 +111,11 @@ describe('Coords', function () {
 		it ('should render to -35 16 55.20000, 149 7 43.26240 when using custom format "D M s" (GPS format) and custom separator', function() {
 			expect(coord.format('-D M s', {latLonSeparator: ', '})).to.equal('-35 16 55.20000, 149 7 43.26240');
 		});
-		it ('should render to 35° 16´ 55" S, 149° 7´ 43" E when using custom format "DD MM ss X" and complete options object', function() {
-			expect(coord.format('DD MM ss X',  {latLonSeparator: ' - ', decimalPlaces: 0})).to.equal('35° 16´ 55" S - 149° 7´ 43" E');
+		it ('should render to 35° 16′ 55″ S, 149° 7′ 43″ E when using custom format "DD MM ss X" and complete options object', function() {
+			expect(coord.format('DD MM ss X',  {latLonSeparator: ' - ', decimalPlaces: 0})).to.equal('35° 16′ 55″ S - 149° 7′ 43″ E');
 		});
-		it ('should render to 35° 16´ 55" S, 149° 7´ 43" E when only passing options object and forgetting format', function() {
-			expect(coord.format({decimalPlaces: 0})).to.equal('35° 16´ 55" S 149° 7´ 43" E');
+		it ('should render to 35° 16′ 55″ S, 149° 7′ 43″ E when only passing options object and forgetting format', function() {
+			expect(coord.format({decimalPlaces: 0})).to.equal('35° 16′ 55″ S 149° 7′ 43″ E');
 		});
 	});
 });

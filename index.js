@@ -63,8 +63,8 @@ var shortFormats = {
 
 var units = {
 	degrees: '°',
-	minutes: '´',
-	seconds: '"',
+	minutes: '′',
+	seconds: '″',
 };
 
 Coords.prototype.format = function(format, options) {
