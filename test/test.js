@@ -57,6 +57,18 @@ describe('formatcoords()', function() {
 
 });
 
+describe('formatcoords() special cases', function() {
+	it('{lat:-35,lng:0}', function () {
+		let coord = formatcoords({lat:-35, lng: 0})
+		expect(coord.lat).to.exist;
+		expect(coord.lon).to.exist;
+		expect(coord.lat).to.be.a('number');
+		expect(coord.lon).to.be.a('number');
+		expect(coord.lat).to.equal(-35);
+		expect(coord.lon).to.equal(0);
+	});
+});
+
 var coord = coords.floats;
 
 describe('Coords', function () {
