@@ -4,7 +4,7 @@ Coords.prototype.init = function() {
 	if (!arguments.length) {
 		throw new Error('no arguments');
 	}
-	else if (arguments[0].lat && arguments[0].lng) {
+	else if (typeof arguments[0] === 'object' && 'lat' in arguments[0] && 'lng' in arguments[0]) {
 		this.lat = arguments[0].lat;
 		this.lon = arguments[0].lng;
 	}
