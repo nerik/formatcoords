@@ -51,6 +51,7 @@ Coords.prototype.compute = function() {
 		values.minutes = values.secondsTotal / 60; 
 		values.minutesInt = Math.floor(values.minutes);
 		values.seconds = values.secondsTotal - (values.minutesInt * 60);
+		values.secondsInt = Math.floor(values.seconds);
 		return values;
 	}
 };
@@ -115,6 +116,8 @@ Coords.prototype.format = function(format, options) {
 		formatted = formatted.replace(/m/g, values.minutes.toFixed(options.decimalPlaces));
 		formatted = formatted.replace(/ss/g, values.seconds.toFixed(options.decimalPlaces)+units.seconds);
 		formatted = formatted.replace(/s/g, values.seconds.toFixed(options.decimalPlaces));
+		formatted = formatted.replace(/SS/g, values.secondsInt.toFixed(options.decimalPlaces)+units.seconds);
+		formatted = formatted.replace(/S/g, values.secondsInt.toFixed(options.decimalPlaces));
 		
 		formatted = formatted.replace(/-/g, (values.initValue<0) ? '-' : '');
 		

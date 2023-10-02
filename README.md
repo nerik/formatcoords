@@ -69,6 +69,8 @@ The following values are available for both latitudes and longitudes:
 |minutes with unit              |MM       |7′        |
 |decimal minutes                |m        |7.63346        |
 |decimal minutes with unit      |mm       |7.63346′        |
+|seconds                        |S        |31        |
+|seconds with unit              |SS       |31″        |
 |decimal seconds                |s        |31.796        |
 |decimal seconds with unit      |ss       |31.796″        |
 |direction                      |X        |[N,S], [E,W]        |
